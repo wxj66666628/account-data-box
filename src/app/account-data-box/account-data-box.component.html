@@ -1,3 +1,21 @@
-<p>
+<h3>
   account-data-box works!
-</p>
+</h3>
+<main>
+  <nz-table *ngIf="accountList?.length" #accountList2 [nzData]="accountList" [nzTotal]="_total" [nzFrontPagination]="false" [nzShowPagination]="true" (nzPageIndexChange)="pageChange($event)">
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
+      <tr>
+        <th nzShowSort nzSortKey="account_executive">Account Executive</th>
+        <th nzShowSort nzSortKey="daily_turnover">Daily Turnover</th>
+        <th nzShowSort nzSortKey="accumulated_turnover">Accumulated Turnover</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of accountList2.data">
+        <td>{{ data.account_executive }}</td>
+        <td>{{ data.daily_turnover | toThousandFormat: 2 }}</td>
+        <td>{{ data.accumulated_turnover | toThousandFormat: 2 }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</main>
