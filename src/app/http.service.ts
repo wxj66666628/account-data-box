@@ -50,9 +50,3 @@ export class HttpClientService {
     return queryString;
   }
 }
-export interface Result{
-  code: number;
-  data: any;
-  desc: string;
-  success: boolean;
-}
