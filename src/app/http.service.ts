@@ -31,13 +31,18 @@ export class HttpClientService {
   extractData(body) {
     if (body) {
       if (JSON.stringify(body) === '{}') return true;
-      return (body === false) ? false : (body===0?0:(body||true));
+      return (body === false) ? false : body;
     }
     else {
       return false;
     }
   }
 
+  /**
+   * format get method params
+   * @param params
+   * @returns {string}
+   */
   handleGetParams(params): string {
     let queryString = '';
     for (let i in params) {
